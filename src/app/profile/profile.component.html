@@ -1,0 +1,23 @@
+<div style="height: 90%;" class="w-100 d-flex justify-content-center align-items-center border shadow">
+
+    <button class="btn btn-link" (click)="toggleStatus()" *ngIf="!formStatus">
+        <i class="fa-solid fa-pen-to-square"></i>
+        Edit Profile
+    </button>
+    <div *ngIf="formStatus">
+        <h3 class="text-center mb-3">Update Profile</h3>
+        <form>
+            <label>
+                <input type="file" (change)="getFile($event)" style="display: none;" >
+                <img [src]="profileImage" class="img-fluid rounded" alt="img">
+            </label>
+            <input type="text" [(ngModel)]="adminProfile.email" name="kjb" placeholder="Email" id="" class="form-control mt-3">
+            <input type="text" [(ngModel)]="adminProfile.password" name="lk" placeholder="Password" id="" class="form-control mb-3">
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-success" (click)="handleSubmit()">Update</button>
+                <button class="btn btn-danger ms-auto" (click)="toggleStatus()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+</div>

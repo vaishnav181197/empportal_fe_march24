@@ -1,0 +1,45 @@
+Angular Modules:-
+---------------------
+
+-collection of relative components
+-app is usually considered as root module also
+-to create custom module
+    >app
+    ng g m module-name
+
+-module components: 
+    >app
+    -ng g c module-name/component-name -m module-name --standalone=false
+
+-module routing:
+    ->module.ts
+    -import Routes,RouterModule
+    -import ComponentClass
+    -create routes array as in usual route configuration
+    -add RouterModule.forChild(routes) in imports of module.ts
+
+    ->app.routes.ts
+    -create path for module using loadChild approach
+
+=>Angular Forms:-
+-Template driven form - two way binding
+-Model driven form /reactive forms
+
+->Toastr
+
+->ngOnInit() - a pre-defined method from Oninit interface that
+can be used for implementing procedures while a components 
+initiating phase[constructor is used for initializing objects]
+
+=>Custom pipes:
+
+-special functions that can transform data format
+
+-ng g p <pipe-name>
+-ng g p foldername/<pipe-name>
+
+
+=>angualr Guards:
+
+-functions that used for controlling access over paths/urls
+-ng g g folder_name/guard_name

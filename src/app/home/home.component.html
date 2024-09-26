@@ -1,0 +1,36 @@
+<div class="container-fluid row justify-content-between" style="height: 90vh;">
+    <div class="col-2 p-0" *ngIf="sideBar">
+        <app-side></app-side>
+    </div>
+    <div [class]="sideBar?'col-10':'container-fluid'">
+        <div class="row">
+            <div class="col-8 p-0">
+                <div class="p-5 d-flex"
+                    style="background-image: url('https://www.shutterstock.com/image-vector/blue-wide-screen-webpage-business-600nw-695161762.jpg');">
+                    <button class="btn" (click)="toggleSideBar()">
+                        <i class="fa-solid fa-bars fa-xl"></i>
+                    </button>
+                    <div>
+                        <h1>Admin DashBoard</h1>
+                        <p>{{adminEmail}}</p>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-sm-12 col-md-6">
+                        <app-calender></app-calender>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <app-chart></app-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 p-0">
+                <app-profile  (adminEvent)="onAdminChange($event)"></app-profile>
+                <div class="mt-2 border p-4 shadow"
+                    style="background-image: url('https://www.shutterstock.com/image-vector/blue-wide-screen-webpage-business-600nw-695161762.jpg');">
+                    <h3>Employee Count : {{empCount}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

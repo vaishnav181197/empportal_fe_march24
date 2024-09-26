@@ -1,0 +1,55 @@
+<div class="container-fluid row" style="height: 90vh;">
+    <div class="col-2 p-0">
+        <app-side></app-side>
+    </div>
+    <div class="col-10">
+        <h1>Employee List</h1>
+        <div class="mt-4 d-flex justify-content-between">
+            <div class="d-flex">
+                <input type="text" name="key" [(ngModel)]="key"  placeholder="Enter name to search" class="form-control me-2 w-75">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" (click)="sortByID()">Sort By ID</a></li>
+                        <li><a class="dropdown-item" (click)="sortByName()">Sort By Name</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a routerLink="/employee/add" class="btn btn-success"> + Add Employee </a>
+        </div>
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>phone Number</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of employees|search:key">
+                    <td>{{i.eid}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.phone}}</td>
+                    <td>
+                        <button class="btn btn-success disabled" *ngIf="i.status=='active'">Active</button>
+                        <button class="btn btn-warning disabled" *ngIf="i.status=='inactive'">Inctive</button>
+                    </td>
+                    <td>
+                        <a routerLink="/employee/edit/{{i.id}}" class="btn me-4">
+                            <i class="fa-solid fa-pen-to-square fa-lg" style="color: #74C0FC;"></i>
+                        </a>
+                        <button class="btn" (click)="deleteEmp(i.id)">
+                            <i class="fa-solid fa-trash" style="color: #e11432;"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-outline-danger" (click)="exportToPdf()">Export As PDF</button>
+    </div>
+</div>

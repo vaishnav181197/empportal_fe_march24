@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center align-items-center"
+    style="height: 90vh;background-color: rgb(145, 221, 145);">
+
+    <div class="w-50 border p-5 shadow bg-light row">
+        <div class="col">
+            <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1725926400&semt=ais_hybrid"
+                alt="" class="img-fluid">
+        </div>
+        <div class="col d-flex flex-column justify-content-center">
+            <h3>Login</h3>
+            <form (ngSubmit)="submitted()" #lgForm="ngForm">
+                <input type="email" name="email" id="em" #email="ngModel" [(ngModel)]="logForm.email" placeholder="Enter Email Id" email
+                    required class="form-control mb-3">
+                <div *ngIf="email.invalid && email.touched" class="text-danger">
+                    *Invalid Email
+                </div>
+                <input type="password" name="pswds" id="ps" #password="ngModel" [(ngModel)]="logForm.password" placeholder="Enter password"
+                    required minlength="3" pattern="[a-zA-Z0-9@!]+" class="form-control mb-3">
+                <div *ngIf="password.invalid && password.touched" class="text-danger">
+                    *Invalid Password
+                </div>
+                <button class="btn btn-outline-success" [disabled]="lgForm.invalid">Login</button>
+            </form>
+        </div>
+    </div>
+
+</div>
